@@ -12,3 +12,7 @@ $breakpoint--medium:                800px;      // anything under is a mobile sc
 # Components / Layout
 --------------------------------------------------------------*/
 @import 'components/layout/header', 'components/layout/common';
+/*--------------------------------------------------------------
+# Components / Charts
+--------------------------------------------------------------*/
+@import 'components/charts/common';
