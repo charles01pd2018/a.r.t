@@ -1,0 +1,78 @@
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+:root {
+  // main color pallette
+  --main-color:                         #46F56E;    // green:            rgb(70, 245, 110)
+  --secondary-color:                    #B4FF5F;    // light green:      rgb(180, 255, 95)
+  --middle-color:                       #E1FF64;    // yellow-green:     rgb(225, 255, 100)
+  --secondary-background:               #F5FF78;    // yellow:           rgb(245, 255, 120)
+  --main-background:                    #F5FFA0;    // light-yellow:     rgb(245, 255, 160)
+  --contrast-color:                     #8FD7E5;    // sky blue:         rgb(143, 215, 229)
+
+  // font colors            
+  --link-hover-color:                   #4B5351;    // dark gray blue:   rgb(194, 203, 214)  
+  --font-contrast-color:                #1F4D45;    // dark torquoise:   rgb(31, 77, 69)
+
+  // other colors
+  --nerutal-background:                 #F4FAFF;   // silver gray:       rgb(244, 250, 255)
+  --neutral-background--compliment:     #FFFFEA;   // yellow tint:       rgb(255, 255, 234)
+}
+
+/*--------------------------------------------------------------
+# Site Variables
+--------------------------------------------------------------*/
+html,
+body {
+  margin: 0 auto;
+  font-family: Verdana; 
+  scroll-behavior: smooth;
+}
+
+$font-sizing-map: (
+  "h1": 3em,
+  "h2": 2.5em,
+  "h3": 1.8em,
+  "h4": 1.2em,
+  "p": 1.15em,
+  "p.text-sm": 1.05em,
+  "p.text-xs": 0.9em
+);
+
+@each $font-type, $font-size in $font-sizing-map {
+  #{$font-type} {
+    font-size: $font-size;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// tablet (5% smaller than Desktop)
+@media(max-width: $breakpoint--large) {
+
+  @each $font-type, $font-size in $font-sizing-map {
+    #{$font-type} {
+      font-size: $font-size * 0.95;
+    }
+  }
+}
+
+// mobile (10% smaller than Desktop)
+@media(max-width: $breakpoint--medium) {
+
+  @each $font-type, $font-size in $font-sizing-map {
+    #{$font-type} {
+      font-size: $font-size * 0.9;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# Site Customization
+--------------------------------------------------------------*/
+* {
+  box-sizing: border-box;
+}

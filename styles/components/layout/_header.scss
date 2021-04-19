@@ -1,0 +1,78 @@
+.header-container {
+    margin-bottom: 3rem;
+
+    .header-wrapper  {
+        display: flex;
+        width: 100%;
+        height: 4rem;
+        position: fixed;
+        top: 0;
+        background-color: white;
+        box-shadow: 2px 5px 2px gray;
+        z-index: 9;
+        padding: 0 1rem;
+        
+        * {
+            margin: 0;
+        }
+
+        .header-branding-wrapper {
+            display: inline-flex;
+            flex-basis: 15%;
+
+            .header-branding-title {
+                font-size: 2rem;
+                padding: 0.6rem;
+            }
+        }
+
+        .header-nav-menu {
+            flex-basis: 85%;
+            display: inline-flex;
+            justify-content: flex-end;
+            white-space: nowrap; // for really long link titles
+            padding: 0.6rem;
+
+            .header-links-wrapper {
+                display: inline-flex;
+                gap: 2rem;
+                padding-top: 0.9rem;
+                list-style-type: none;
+
+                // mobile menu
+                @media (max-width: $breakpoint--medium) {
+                    flex-direction: column;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 100%;
+                    background: white;
+                    align-items: center;
+                    overflow: hidden;
+                    padding: 1rem;
+                    border: 3px solid var(--contrast-color);
+
+                    transition: transform 0.25s linear;
+
+                    &.header-mobile-not-active {
+                        transform: scaleY(0);
+                        transform-origin: top center;
+                    }
+
+                    &.header-mobile-active {
+                        transform: scaleY(1);
+                        transform-origin: top center;
+                    }
+                }
+            }
+            
+            .header-nav-toggle {
+                display: none; // do not display hamburger icon on desktop
+                
+                @media (max-width: $breakpoint--medium) {
+                    display: block; // display hamburger icon on mobile + tablet
+                }
+            }
+        }
+    }
+}
