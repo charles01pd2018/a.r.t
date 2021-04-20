@@ -4,7 +4,7 @@ import Head from 'next/head';
 import DefaultLayout from '../../layout/defaultLayout';
 // components
 import { Hero } from '../../components';
-import { BarChart } from '../../components/charts';
+import { BarChart, RadialChart } from '../../components/charts';
 // content
 import { HeroContent } from '../../content/chartsContent';
 
@@ -19,6 +19,7 @@ const Charts = ({
 
         <Hero id='charts-page-hero' content={HeroContent} />
         <BarChart id='weather-bar-chart' dimensions={ { width: 650, height: 400 } } />
+        <RadialChart id='weather-radial-chart' dimensions={ { width: 650, height: 650 } } />
     </DefaultLayout>
   );
 }

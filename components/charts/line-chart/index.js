@@ -1,53 +1,34 @@
 // dependencies
-import * as d3 from 'd3';
+import { useState } from 'react';
+// utils
+import { getDemoData } from '../utils';
+import { formatd3LineChart } from './data';
 
-/* CONSTANTS */
-const WIDTH = 650;
-const HEIGHT = 400;
 
-// load the data
-/* data shape
-[
-    {
-    "date": "1/1/2017",
-    "high": 54,
-    "avg": 50,
-    "low": 46
-  }, ...
-] */
-const data = d3.json('https://raw.githubusercontent.com/sxywu/react-d3-example/master/public/sf.json')
-  .then(resp => {
-    return resp.map( d => Object.assign( d, { date: new Date(d.date) } ) );
-  } );
+const LineChart = ({
+    id,
+    dimensions: { width, height },
+}) => {
 
-// d3 variables
-const xExtent = d3.extent( data, d => d.date );
-const xScale = d3.scaleTime()
-    .domain( xExtent )
-    .range( [ 0, WIDTH ] );
+    const rawData = getDemoData();
+    const [ data, setData ] = useState( formatd3LineChart( rawData, width, height ) );
 
-const yMinExtent = d3.max( data, d => d.high );
-const yMaxExtent = d3.min( data, d => d.low );
-const yScale = d3.scaleLinear()
-  .domain( [ yMinExtent, yMaxExtent ] )
-  .range( [ HEIGHT, 0 ] );
+    return (
+        <section id={id} className='container'>
+        <h2>Line Chart</h2>
+        <div className='radial-chart-container chart-container'>
+            <svg width={width} height={height}>
+                <g transform={`translate( ${width / 2}, ${height / 2} )`}>
+                    {
+                        data.map( ( radialItem, index ) => (
+                            <path key={`radial-${index}`} d={radialItem.path} fill={radialItem.fill} /> 
+                        ) )
+                    }
+                </g>
+            </svg>
+        </div>
+        </section>
+    );
+}
 
-// final data
-const highLine = d3.line()
-  .x( d => xScale( d.date ) )
-  .y( d => yScale( d.high ) );
-
-const lowLine = d3.line()
-  .x( d, xScale( d.date ) )
-    .y( d => yScale( d.low ) ) ;
-
-return [
-    {
-        path: highLine( data ), 
-        fill: 'red'
-    },
-    {
-        path: lowLine( data ),
-        fill: 'blue'
-    }
-];
+export default LineChart;

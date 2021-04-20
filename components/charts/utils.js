@@ -10,5 +10,5 @@ export const fetchDataWithDate = async ( url ) => {
 export const getDemoData = () => {
     const rawData = require('../../data/data.json');
 
-    return rawData.map( d => Object.assign( d, { date: new Date(d.date) } ) ); ;
+    return rawData.map( d => Object.assign( d, { date: new Date(d.date) } ) );
 }
