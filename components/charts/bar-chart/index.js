@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as d3 from 'd3';
 // utils
 import { getDemoData } from '../utils';
-import { formatd3BarChartData, getAxis } from './data';
+import { formatd3BarChartData } from './data';
 
 
 const BarChart = ({
