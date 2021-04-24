@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "canvas-sketch": "^0.7.4",
+    "canvas-sketch-util": "^1.10.0",
     "classnames": "^2.3.1",
     "d3": "^6.7.0",
     "next": "10.0.8",
